@@ -1,0 +1,201 @@
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Licznik</title>
+<style>
+  body {
+	font-size:1vw;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top:15%;
+  }
+  #countdown {
+    font-size: 2em;
+  }
+  /* Dodajemy styl dla tła z animacją */
+  #background {
+    position: absolute;
+    top:25%; /* Ustawiamy odstęp od dołu */
+    left: 20%;
+	width:10%;
+	height:15%;
+    
+    /* Aby umożliwić skalowanie obrazu tła */
+    background-size: cover;
+    background-position: center;
+    /* Ustaw animację tła */
+    animation: fadeIn 5s infinite;
+  }
+  #background2 {
+    position: absolute;
+    top: 25%; /* Ustawiamy odstęp od dołu */
+    left: 70%;
+	width:10%;
+	height:15%;
+    
+    /* Aby umożliwić skalowanie obrazu tła */
+    background-size: cover;
+    background-position: center;
+    /* Ustaw animację tła */
+    animation: fadeIn 5s infinite;
+  }
+  #background3 {
+    position: absolute;
+     /* Ustawiamy odstęp od dołu */
+    left: 50%;
+	width:120%;
+	height:30%;
+    transform: translateX(-50%); /* Wyśrodkowujemy poziomo */
+    /* Aby umożliwić skalowanie obrazu tła */
+    background-size: cover;
+    background-position: center;
+    /* Ustaw animację tła */
+    animation: fadeIn 5s infinite;
+  }
+  #background4 {
+    position: absolute;
+    bottom:75%; /* Ustawiamy odstęp od dołu */
+    left: 37.5%;
+	width:10%;
+	height:15%;
+    
+    /* Aby umożliwić skalowanie obrazu tła */
+    background-size: cover;
+    background-position: center;
+    /* Ustaw animację tła */
+    animation: fadeIn 5s infinite;
+  }
+  #background5 {
+    position: absolute;
+    bottom:75%;/* Ustawiamy odstęp od dołu */
+    left: 52%;
+	width:10%;
+	height:15%;
+	
+    
+    /* Aby umożliwić skalowanie obrazu tła */
+    background-size: cover;
+    background-position: center;
+    /* Ustaw animację tła */
+    animation: fadeIn 5s infinite;
+  }
+ 
+  #serduszka {
+    position: relative; /* Ustawienie pozycji relatywnej */
+  }
+  .heart {
+    position:absolute;
+    display: none;
+    color: red;
+    font-size: 100%;
+    animation: beat 0.5s infinite alternate;
+  }
+  button {
+	border-radius:100%;
+	background-color:red;
+	font-size:100%;
+	width:10%;
+	height:auto;
+  }
+  @keyframes beat {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1.5);
+    }
+  }
+  #hearts-container {
+    position: absolute;
+    bottom: -10%; /* Odległość od dolnej krawędzi */
+    left: 45%; /* Centrowanie w poziomie */
+    transform: translateX(-50%); /* Centrowanie w poziomie */
+  }
+</style>
+</head>
+<body>
+<!-- Pozostała część kodu -->
+<h1>Tyle jesteśmy razem misiu <3</h1>
+<div id="countdown"></div>
+<!-- Dodajemy tło z animacją -->
+<div id="background">
+  <img src="https://img.gifyagusi.pl/2020/09/15/obrazek-gif/buziaki/Biały%20miś%20atakuje%20buziakami.gif" alt="Animowany GIF" style="width: 100%; height: 100%;">
+</div>
+<div id="background2">
+  <img src="https://gifyagusi.pl/img/2020/09/15/obrazek-gif/buziaki/Bia%C5%82y%20mi%C5%9B%20ca%C5%82uje%20br%C4%85zowego.gif" alt="Animowany GIF" style="width: 100%; height: 100%;">
+</div>
+<div id="background3" style="position: relative;">
+  <img src="https://img.gifyagusi.pl/2020/09/15/obrazek-gif/buziaki/Brązowy%20miś%20przesyła%20buziaki.gif" alt="Animowany GIF" style="width: 10%; height: 100%;">
+  </div>
+  <div id="background4">
+    <img src="https://img.gifyagusi.pl/2020/09/15/obrazek-gif/buziaki/Biały%20króliczek%20wysyła%20serduszkowego%20całusa.gif" alt="Animowany GIF" style="width: 100%; height: 100%;">
+  </div>
+  <div id="background5">
+    <img src="https://img.gifyagusi.pl/2020/09/17/obrazek-gif/buziaki/Dziewczyna%20przesyła%20słodkiego%20buziaka.gif" alt="Animowany GIF" style="width: 80%; height: 100%;">
+  </div>
+  
+  <div id="serduszka">
+    <button  id="showHearts"> klik </button>
+    <div id="hearts-container"></div>
+  </div>
+</div>
+
+<script>
+  function updateCountdown() {
+    // Data początkowa (29 grudnia 2023 roku)
+    var startDate = new Date("2023-12-29T00:00:00");
+    // Data teraźniejsza
+    var nowDate = new Date();
+    // Obliczenie różnicy czasu w milisekundach
+    var difference = nowDate - startDate;
+
+    // Obliczenie ilości dni, godzin, minut i sekund
+    var days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    difference -= days * (1000 * 60 * 60 * 24);
+    
+    var hours = Math.floor(difference / (1000 * 60 * 60));
+    difference -= hours * (1000 * 60 * 60);
+    
+    var minutes = Math.floor(difference / (1000 * 60));
+    difference -= minutes * (1000 * 60);
+    
+    var seconds = Math.floor(difference / 1000);
+
+    // Wyświetlenie wyniku
+    document.getElementById("countdown").innerHTML = "" + days + " dni, " + hours + " godzin, " + minutes + " minut, " + seconds + " sekund.";
+  }
+
+  // Aktualizuj odliczanie co sekundę
+  setInterval(updateCountdown, 1000);
+
+  // Pierwsze wywołanie funkcji aktualizującej odliczanie
+  updateCountdown();
+
+  document.getElementById("showHearts").addEventListener("click", function() {
+    var heartsContainer = document.getElementById("hearts-container");
+    
+    // Określony obszar prostokąta (w pikselach) pod przyciskiem, w którym mają się pojawić serduszka
+    var rectWidth = 200;
+    var rectHeight = 100;
+    
+    var heart = document.createElement("span");
+    heart.innerHTML = "❤️";
+    heart.classList.add("heart");
+    
+    // Losowanie pozycji wewnątrz prostokąta
+    var randomX = Math.random() * (rectWidth - 10); // 50 pikseli odejmujemy, aby serduszko było całkowicie widoczne wewnątrz prostokąta
+    var randomY = Math.random() * (rectHeight - 10); // Analogicznie dla wysokości
+    
+    heart.style.left = randomX + "px";
+    heart.style.top = randomY + "px";
+
+    heartsContainer.appendChild(heart);
+    heart.style.display = "inline-block";
+    setTimeout(function() {
+      heartsContainer.removeChild(heart);
+    }, 5000); // Usunięcie serduszka po 15 sekundach
+  });
+</script>
+</body>
+</html>
